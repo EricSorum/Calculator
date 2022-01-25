@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="csscalc.css">
+   
+</head>
+<body>
+  
+
+    <div class="nums">
+        <div id="display-row">
+            <div id="display"></div>
+            <button id="clear">C</button>
+        </div>
+        <div class="row">
+            <div data-key="103" class = "num"><kbd>7</kbd></div>
+            <div data-key="104" class = "num"><kbd>8</kbd></div>
+            <div data-key="105" class = "num"><kbd>9</kbd></div>
+        </div>
+        <div class="row">
+            <div data-key="100" class = "num"><kbd>4</kbd></div>
+            <div data-key="101" class = "num"><kbd>5</kbd></div>
+            <div data-key="102" class = "num"><kbd>6</kbd></div>
+        </div>
+        <div class="row">
+            <div data-key="97" class = "num"><kbd>1</kbd></div>
+            <div data-key="98" class = "num"><kbd>2</kbd></div>
+            <div data-key="99" class = "num"><kbd>3</kbd></div>
+        </div>
+        <div class="row">
+            <div data-key="107" class = "op"><kbd>+</kbd></div>
+            <div data-key="96" class = "num"><kbd>0</kbd></div>
+            <div data-key="109" class = "op"><kbd>-</kbd></div>
+        </div>
+        <div class="row">
+            <div data-key="111" class = "op"><kbd>/</kbd></div>
+            <div data-key="106" class = "op"><kbd>*</kbd></div>
+            <div data-key="13" class = "op"><kbd>=</kbd></div>
+        </div>
+    </div>
+
+    <audio data-key="96" src="button.mp3"></audio>
+    <audio data-key="97" src="button.mp3"></audio>
+    <audio data-key="98" src="button.mp3"></audio>
+    <audio data-key="99" src="button.mp3"></audio>
+    <audio data-key="100" src="button.mp3"></audio>
+    <audio data-key="101" src="button.mp3"></audio>
+    <audio data-key="102" src="button.mp3"></audio>
+    <audio data-key="103" src="button.mp3"></audio>
+    <audio data-key="104" src="button.mp3"></audio>
+    <audio data-key="105" src="button.mp3"></audio>
+    <audio data-key="106" src="button.mp3"></audio>\
+    <audio data-key="107" src="button.mp3"></audio>
+    <audio data-key="108" src="button.mp3"></audio>
+    <audio data-key="109" src="button.mp3"></audio>
+    <audio data-key="111" src="button.mp3"></audio>
+    <audio data-key="13" src="button.mp3"></audio>
+
+    <div class="footer" style="color:white"><span>Image by Rob Brown from Pixabay</span></div>
+    <script src="jscalc.js"></script>
+
+</body>
+
+</html>

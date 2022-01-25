@@ -1,0 +1,101 @@
+html {
+    font-size: 10px;
+    font-family: monospace;
+}
+
+body {
+    background-image: url("register.jpg");
+    background-size: cover;
+}
+
+.nums {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#display {
+    color: white;
+    font-family: "Courier", "Lucida Console", monospace;
+    font-size: 48px;
+    text-align: right;
+    width: 400px;
+    height: 90px;
+    padding: 10px;
+    margin: 20px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 5px;
+    outline: none;
+}
+
+#clear {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: "Courier", "Lucida Console", monospace;
+    font-size: 48px;
+    width: 60px;
+    height: 50px;
+    padding: 8px;
+    margin: 5px;
+    border: 2px solid black;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 5px;
+    outline: none;
+}
+
+.row, #display-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.num {
+    border: 4px solid black;
+    border-radius: 50%;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    transition: 0.07s;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: rgba(0,0,0,0.6);
+}
+
+.op {
+    border: 4px solid black;
+    border-radius: 50%;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    transition: 0.07s;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background: rgba(220, 220, 200, 0.6);
+}
+
+.kaching {
+    transform: scale(0.9);
+    border-color: #0000007c;
+    box-shadow: 0 0 10px #0000007c;
+}
+
+kbd {
+    display: block;
+    font-size: 4rem;
+}
