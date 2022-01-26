@@ -45,13 +45,18 @@ make event listener for all numbers
     check if goTime is true; if so, store display as x and clear display
 */
 
-
-let opParam, xParam, yParam
+let a = '3.44'
+console.log(parseFloat(a))
+let opParam, xParam, yParam;
 let goTime = false;
 let displayArr = [];
 
+// I NEED TO FIGURE OUT HOW TO USE DECIMALS...
+
 function operate(operator, x, y) {
     let answer
+    console.log('x is ' + x)
+    console.log('y is ' + y)
     switch (operator) {
         case '+':
             answer = x + y;
@@ -86,15 +91,22 @@ numArr.forEach(num => num.addEventListener('click', playSound));
 
 const display = document.getElementById('display');
 display.textContent = '0';
-
+let restart = false;
 window.addEventListener('keydown', keyStroke)
 function keyStroke(e) {
+    console.log(e.key)
+    console.log(typeof e.key)
     if (e.key == 'Enter') {
         displayArr = [];
-        displayArr.push(operate(String(opParam), parseInt(xParam), parseInt(yParam)));
+        displayArr.push(operate(String(opParam), parseFloat(xParam), parseFloat(yParam)));
         display.textContent = displayArr.join('');;
+        restart = true;
+        goTime = false;
     } else if (Number.isInteger(parseInt(e.key))) {
         numStroke(e)
+    } else if (e.key == '.' && displayArr.includes('.') == false) {
+        displayArr.push(e.key);
+        display.textContent = displayArr.join('');
     } else if (e.key == 'Delete') {
         clear();
     } else if (e.key == '+' || '-' || '/' || '*') {
@@ -102,9 +114,16 @@ function keyStroke(e) {
         opStroke(e)
     }
 }
+// NOW THE DECIMAL GETS ERASED from the yparam...???
 
 function numStroke(e) {
-    if (goTime == false) {
+    console.log('num')
+    if (goTime == false && restart == false) {
+        displayArr.push(e.key);
+        display.textContent = displayArr.join('');
+    } else if (goTime == false && restart == true) {
+        clear();
+        restart = false;
         displayArr.push(e.key);
         display.textContent = displayArr.join('');
     } else {
@@ -112,31 +131,35 @@ function numStroke(e) {
         displayArr.push(e.key);
         display.textContent = displayArr.join('');
         yParam = displayArr.join('');
-        //insert second switch here? then put else if statement above that runs
-        // operate function?
         goTime = false;
     }
 }
+
+// AFTER I PRESS AN OPERATOR, THEN ENTER, IT SHOULD PROCESS THE PREVIOUS OPERATION
+// INSTEAD IT RETURN NaN
+
+// FOR SOME REASON THE Y PARAM IS ONLY ACCEPTING ONE DIGIT...
+// MAYBE THAT'S WHY THE DECIMAL ISN'T WORKING EITHER... YEAH MUST BE
+// SO SOMETHING IS WRONG WITH THE } ELSE { PART OF NUMsTROKE
+// it empties the displayArr and only one character is stored as yParam...
 
 function opStroke(e) {
     if (yParam) {
         console.log('hi')
         displayArr = [];
-        displayArr.push(operate(String(opParam), parseInt(xParam), parseInt(yParam)));
+        displayArr.push(operate(String(opParam), parseFloat(xParam), parseFloat(yParam)));
         display.textContent = displayArr.join('');;
     }
     goTime = true;
     xParam = displayArr.join('');
     opParam = e.key;
-  // how do I get the opStroke to do the operate function when necessary?
-  // one idea is to null out the values of x and y after operate and then check
-  // if y has a value in numStroke...
-  // or add another switch...?
 }
 
 function clear() {
     displayArr = [];
     display.textContent = displayArr.join('');
+    opParam, xParam, yParam = null;
+    goTime = false;
 }
 
 /// Below is just the button animation and sound code.
