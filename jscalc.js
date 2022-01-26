@@ -25,7 +25,6 @@ then you begin entering the second number
     do i need a second switch?
 
 
-if (regex that asks if answer is not a number) {return 'ERROR'}
 
 */
 
@@ -47,10 +46,9 @@ make event listener for all numbers
 */
 
 
-let opParam, xParam, yParam;
+let opParam, xParam, yParam
 let goTime = false;
 let displayArr = [];
-console.log(String(goTime))
 
 function operate(operator, x, y) {
     let answer
@@ -71,6 +69,7 @@ function operate(operator, x, y) {
             answer = null;
     }
     goTime = true;
+    opParam, xParam, yParam = null;
     return Math.round(1000*answer)/1000;
 }
 
@@ -84,7 +83,6 @@ numArr.forEach(num => num.addEventListener('click', playSound));
 // the numStroke/opStroke only does e.key, so clicking displays no numbers
 // will need completely new functions
 
-// make the delete key do displayArr = '';
 
 const display = document.getElementById('display');
 display.textContent = '0';
@@ -94,12 +92,11 @@ function keyStroke(e) {
     if (e.key == 'Enter') {
         displayArr = [];
         displayArr.push(operate(String(opParam), parseInt(xParam), parseInt(yParam)));
-        // ok so i'm trying parseInt the x and y
         display.textContent = displayArr.join('');;
-        /// maybe because i'm using .join, it's trying to use strings to do
-        // the math intead of numbers
     } else if (Number.isInteger(parseInt(e.key))) {
         numStroke(e)
+    } else if (e.key == 'Delete') {
+        clear();
     } else if (e.key == '+' || '-' || '/' || '*') {
         if (e.key == '/') {e.preventDefault();}
         opStroke(e)
@@ -122,8 +119,13 @@ function numStroke(e) {
 }
 
 function opStroke(e) {
+    if (yParam) {
+        console.log('hi')
+        displayArr = [];
+        displayArr.push(operate(String(opParam), parseInt(xParam), parseInt(yParam)));
+        display.textContent = displayArr.join('');;
+    }
     goTime = true;
-
     xParam = displayArr.join('');
     opParam = e.key;
   // how do I get the opStroke to do the operate function when necessary?
@@ -133,7 +135,7 @@ function opStroke(e) {
 }
 
 function clear() {
-    displayArr.push(e.key);
+    displayArr = [];
     display.textContent = displayArr.join('');
 }
 
